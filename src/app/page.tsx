@@ -1,7 +1,10 @@
 import * as FileInput from '@/components/Form/FileInput'
+import { Select } from '@/components/Form/Select'
+import { SelectItem } from '@/components/Form/Select/SelectItem'
+import { TextArea } from '@/components/Form/TextArea'
 import InputRoot, { InputControl, InputPrefix } from '@/components/Input'
 import SettingsTabs from '@/components/SettingsTabs'
-import { Mail } from 'lucide-react'
+import { Bold, Italic, Link, List, ListOrdered, Mail } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -107,17 +110,34 @@ export default function Home() {
             >
               Country
             </label>
-            <div></div>
+            <Select placeholder="Select a country...">
+              <SelectItem value="br" text="Brazil"></SelectItem>
+              <SelectItem value="us" text="United States"></SelectItem>
+              <SelectItem value="ca" text="Canada"></SelectItem>
+              <SelectItem value="au" text="Australia"></SelectItem>
+              <SelectItem value="fr" text="France"></SelectItem>
+              <SelectItem value="de" text="Germany"></SelectItem>
+              <SelectItem value="jp" text="Japan"></SelectItem>
+              <SelectItem value="cn" text="China"></SelectItem>
+              <SelectItem value="ru" text="Russia"></SelectItem>
+              <SelectItem value="sa" text="South Africa"></SelectItem>
+            </Select>
           </div>
 
           <div className="grid gap-6 grid-cols-3 pt-5">
-            <label
-              className="text-sm font-medium text-zinc-500"
-              htmlFor="timezone"
-            >
+            <label className="text-sm font-medium text-zinc-700" htmlFor="role">
               Timezone
             </label>
-            <div></div>
+            <Select placeholder="Select a timezone...">
+              <SelectItem
+                value="utc8"
+                text="Pacific Standard Time (UTC−08:00)"
+              ></SelectItem>
+              <SelectItem
+                value="br"
+                text="América São Paulo (UTC−03:00)"
+              ></SelectItem>
+            </Select>
           </div>
 
           <div className="grid gap-6 grid-cols-3 pt-5">
@@ -127,7 +147,62 @@ export default function Home() {
                 Write a short introduction.
               </span>
             </label>
-            <div></div>
+
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <Select placeholder="" defaultValue="normal">
+                  <SelectItem
+                    value="normal"
+                    defaultChecked
+                    text="Normal text"
+                  />
+                  <SelectItem value="md" text="Markdown"></SelectItem>
+                </Select>
+
+                <div className="flex items-center">
+                  <button
+                    type="button"
+                    className="p-2 hover:bg-zinc-50 rounded-md"
+                  >
+                    <Bold className="w-4 h-4 text-zinc-500" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 hover:bg-zinc-50 rounded-md"
+                  >
+                    <Italic className="w-4 h-4 text-zinc-500" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 hover:bg-zinc-50 rounded-md"
+                  >
+                    <Link className="w-4 h-4 text-zinc-500" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 hover:bg-zinc-50 rounded-md"
+                  >
+                    <List className="w-4 h-4 text-zinc-500" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 hover:bg-zinc-50 rounded-md"
+                  >
+                    <ListOrdered
+                      className="w-4 h-4 text-zinc-500"
+                      strokeWidth={3}
+                    />
+                  </button>
+                </div>
+              </div>
+
+              <TextArea
+                id="bio"
+                defaultValue="I'm a Product Designer based in Melbourne, Australia. I
+                specialise in UX/UI design, brand strategy, and Webflow
+                development."
+              />
+            </div>
           </div>
 
           <div className="grid gap-6 grid-cols-3 pt-5">
